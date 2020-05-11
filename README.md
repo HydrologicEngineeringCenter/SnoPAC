@@ -3,8 +3,8 @@ Snow PAC (Parametric Aggregation Calculator) is a Jython script that can be used
 
 For Context, Instructions, and Example files; see the following Discourse Post: https://discourse.hecdev.net/t/what-is-snow-pac-a-snow-melt-ati-meltrate-parameter-calculator/721
 
-Thanks,
-Myles McManus, P.E.
-Hydrologic Engineering Center
-U.S. Army Corps of Engineers
+Thanks,<br />
+Myles McManus, P.E.<br />
+Hydrologic Engineering Center<br />
+U.S. Army Corps of Engineers<br />
 mrmylesmc@gmail.com
