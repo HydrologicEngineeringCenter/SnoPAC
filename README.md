@@ -1,5 +1,5 @@
 # SnowPAC
-Snow PAC (Processor Aggregator Calculator). Snow ATI Melt Rate Relationship Calculator. For use in HEC-HMS Snowmelt modeling
+Snow PAC (Parametric Aggregation Calculator). Snow ATI Melt Rate Relationship Calculator. For use in HEC-HMS Snowmelt modeling
 
 For Context, Instructions, and Example files; see the following Discourse Post: https://discourse.hecdev.net/t/what-is-snow-pac-a-snow-melt-ati-meltrate-parameter-calculator/721
 
