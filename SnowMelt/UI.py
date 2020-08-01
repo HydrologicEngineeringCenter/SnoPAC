@@ -5,12 +5,7 @@ Created on Nov 15, 2019
 '''
 import os
 import sys
-
-# Add lib directory to module search path
-parent_dir = os.path.abspath(os.path.dirname(__file__))
-lib_dir = os.path.join(parent_dir, 'lib')
-sys.path.append(lib_dir)
-
+from datetime import datetime
 from java.awt import Color, Font, Image
 # from java.awt import Insets
 from java.awt.event import MouseAdapter, MouseMotionAdapter, KeyEvent
@@ -24,11 +19,35 @@ from javax.swing.table import DefaultTableModel
 from java.io import File
 # from java.util import Arrays, Collections
 
-from hec.heclib.dss     import HecDss
+from hec.heclib.dss     import HecDss, HecDataManager
 # from hec.util import CalendarField
+def lib_dir_311():
+    parent_dir = os.getcwd()
+    global lib_dir
+    lib_dir = os.path.join(parent_dir, 'HecDssVue\scripts\lib')
+    global img_dir
+    img_dir = os.path.join(parent_dir, 'HecDssVue\scripts\Images')
+    print lib_dir
+    sys.path.append(lib_dir)
 
+def lib_dir_321():
+    parent_dir = os.path.join(os.environ['APPDATA'], 'DSSVue', 'scripts')
+    global lib_dir2
+    lib_dir2 = os.path.join(parent_dir, 'lib')
+    global img_dir2
+    img_dir2 = os.path.join(parent_dir, 'Images')
+    print lib_dir2
+    sys.path.append(lib_dir2)
+
+# Add lib directory to module search path for CWMS 3.2.1 and forward
+lib_dir_321()
+lib_dir_311()
+# Add lib directory to module search path for CWMS 3.1.1 and forward
 import Locations, CalcAtiMelt, PlotAtiMelt, ProcessPD, CalcPD, PlotPD, CalcMeltRate
 
+now = datetime.now().strftime("%H-%M-%S")
+HecDataManager.setMessageFile("_".join(["C:\\temp\\","Snow_PAC", now , ".log"]))
+HecDataManager.setMessageLevel(5)
 
 class UI:
     global dssFile
@@ -69,9 +88,11 @@ class UI:
     contentPane.addMouseListener(mL)
     contentPane.addMouseMotionListener(mML)
     
-    
-    
-    btnIcon = ImageIcon("./Images/button.jpg")
+    if os.path.exists(img_dir + "/button.jpg"):
+        btnIcon = ImageIcon(img_dir +"/button.jpg")
+    else:
+        btnIcon = ImageIcon(img_dir2 +"/button.jpg")
+        
     
     scrollPane_events = JScrollPane()
     scrollPane_events.setBounds(270, 372, 403, 263)
@@ -274,8 +295,11 @@ class UI:
     lbl_castle.setBounds(110, 678, 40, 25);
     leftPanel.add(lbl_castle);
     
-    i_corps = ImageIO.read(File("./Images/CorpsCastle.png"));
-     
+    try:
+        i_corps = ImageIO.read(File(img_dir + "/CorpsCastle.png"));
+    except:
+        i_corps = ImageIO.read(File(img_dir2 + "/CorpsCastle.png"));
+        
     corpsCastle = i_corps.getScaledInstance(lbl_castle.getWidth(), lbl_castle.getHeight(), Image.SCALE_SMOOTH);
      
     lbl_castle.setVerticalAlignment(SwingConstants.TOP);
@@ -284,9 +308,12 @@ class UI:
     lbl_logo = JLabel("");
     lbl_logo.setBounds(18, 294, 218, 148);
     leftPanel.add(lbl_logo);
-     
-
-    snowLogo = ImageIO.read(File("./images/melted-snowman.png"));
+    
+    try:
+        snowLogo = ImageIO.read(File(img_dir + "/melted-snowman.png"));
+    except:
+        snowLogo = ImageIO.read(File(img_dir2 +"/melted-snowman.png"));
+        
      
     dssLogo = snowLogo.getScaledInstance(lbl_logo.getWidth(), lbl_logo.getHeight(),
             Image.SCALE_SMOOTH);
@@ -298,7 +325,11 @@ class UI:
     lbl_logo2.setBounds(18, 11, 218, 148);
     leftPanel.add(lbl_logo2);
      
-    snowPacLogo = ImageIO.read(File("./images/SnowPac.png"));
+    try:
+        snowPacLogo = ImageIO.read(File(img_dir +"/SnowPac.png"));
+    except:
+        snowPacLogo = ImageIO.read(File(img_dir2 +"/SnowPac.png"));
+        
      
     snowPac = snowPacLogo.getScaledInstance(lbl_logo2.getWidth(), lbl_logo2.getHeight(),
             Image.SCALE_SMOOTH);

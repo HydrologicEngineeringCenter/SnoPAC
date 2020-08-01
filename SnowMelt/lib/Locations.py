@@ -6,9 +6,11 @@ from hec.heclib.dss     import HecDss
 # from collections        import defaultdict
 # from __builtin__        import max
 # from copy               import deepcopy
+from hec.dssgui     import ListSelection
 
-global dssFile 
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+dssFile = HecDss.open(dssFileName)
 # class Locations():
 def getPaths(dssFile):
 # Get A and B-parts that have C-parts of PRECIP-INC, SWE, TEMPERATURE-AIR-AVG

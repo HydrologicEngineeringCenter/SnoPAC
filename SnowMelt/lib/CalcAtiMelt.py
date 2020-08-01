@@ -6,6 +6,7 @@ Created on Nov 22, 2019
 
 from hec.heclib.dss         import HecDss
 from hec.heclib.util        import HecTime
+from hec.dssgui             import ListSelection
 from hec.io                 import TimeSeriesContainer
 from datetime               import datetime
 from OrderedDict27          import OrderedDict
@@ -13,12 +14,12 @@ from collections            import defaultdict
 from __builtin__            import max
 from copy                   import deepcopy
 from Locations              import getPaths, getList
-import UI
+# import UI
 
-# mainWindow = ListSelection.getMainWindow()
-# dssFileName = mainWindow.getDSSFilename()
-#print "dssfile:", dssFileName
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+print "dssfile:", dssFileName
+dssFile = HecDss.open(dssFileName)
 
 locDict, bList = getPaths(dssFile)
 # locList = getList(locDict)

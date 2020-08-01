@@ -8,9 +8,10 @@ from hec.io          import TimeSeriesContainer
 from hec.io         import PairedDataContainer
 from hec.script import Plot, AxisMarker
 from hec.heclib.dss import HecDss
-# from hec.dssgui import ListSelection
+from hec.dssgui import ListSelection
 from hec.heclib.util import HecTime
 from OrderedDict27 import OrderedDict
+
 
 '''
 Created on Aug 31, 2017
@@ -41,10 +42,10 @@ print '\n#----------------------------------------------------------------------
 print '#Begin DSS Data Retrieval'
 print '#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#'
 
-# mainWindow = ListSelection.getMainWindow()
-# dssFileName = mainWindow.getDSSFilename()
-#print "dssfile:", dssFileName
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+print "dssfile:", dssFileName
+dssFile = HecDss.open(dssFileName)
 
 # #Get A and B-parts that have C-parts of PRECIP-INC, SWE, TEMPERATURE-AIR-AVG
 bp = []

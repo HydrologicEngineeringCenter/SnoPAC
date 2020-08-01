@@ -1,10 +1,15 @@
 from hec.heclib.dss         import HecDss
 from Locations              import getPaths, getList
 from hec.script import Plot, AxisMarker
+from hec.dssgui     import ListSelection
 
 # global loctDict
 
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+
+
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+dssFile = HecDss.open(dssFileName)
 
 locDict, bList = getPaths(dssFile)
 locList = getList(locDict)

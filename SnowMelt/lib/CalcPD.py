@@ -2,8 +2,11 @@ from hec.io         import PairedDataContainer
 from hec.heclib.dss import HecDss
 from datetime               import datetime
 import Locations
+from hec.dssgui     import ListSelection
 
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+dssFile = HecDss.open(dssFileName)
 
 # EoY = datetime.strptime('30Sep', '%d%b').date()
 

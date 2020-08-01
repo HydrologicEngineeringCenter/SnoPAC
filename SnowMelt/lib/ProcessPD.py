@@ -5,8 +5,12 @@ from hec.io         import PairedDataContainer
 from hec.heclib.dss import HecDss
 import CalcPD
 from javax.swing import JOptionPane
+from hec.dssgui     import ListSelection
 
-dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+mainWindow = ListSelection.getMainWindow()
+dssFileName = mainWindow.getDSSFilename()
+dssFile = HecDss.open(dssFileName)
+
 EoY = datetime.strptime('30Sep', '%d%b').date()
 
 def getSpecifiedDates(startTextField, endTextField):
