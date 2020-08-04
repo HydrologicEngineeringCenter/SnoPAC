@@ -13,15 +13,20 @@ from OrderedDict27          import OrderedDict
 from collections            import defaultdict
 from __builtin__            import max
 from copy                   import deepcopy
-from Locations              import getPaths, getList
+import Locations
+
+dssFile = Locations.dssFile
+# from Locations              import getPaths, getList
 # import UI
 
-mainWindow = ListSelection.getMainWindow()
-dssFileName = mainWindow.getDSSFilename()
-print "dssfile:", dssFileName
-dssFile = HecDss.open(dssFileName)
+# mainWindow = ListSelection.getMainWindow()
+# dssFileName = mainWindow.getDSSFilename()
+# print "dssfile:", dssFileName
+# dssFile = HecDss.open(dssFileName)
+# 
+# locDict, bList = getPaths(dssFile)
+# locDict = Locations.locDict
 
-locDict, bList = getPaths(dssFile)
 # locList = getList(locDict)
 
 # get SWE, Precip, and Temp, paths from UI
@@ -44,6 +49,7 @@ def processPathsLists(swePaths, precipPaths, tempPaths):
         str(p).split(",")
         str(q).split(",")
         str(r).split(",")
+        print p
         swePD.append    (p[0])
         precipPD.append (q[0])
         tempPD.append   (r[0])

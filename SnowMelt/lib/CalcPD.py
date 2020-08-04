@@ -3,10 +3,9 @@ from hec.heclib.dss import HecDss
 from datetime               import datetime
 import Locations
 from hec.dssgui     import ListSelection
+import Locations
 
-mainWindow = ListSelection.getMainWindow()
-dssFileName = mainWindow.getDSSFilename()
-dssFile = HecDss.open(dssFileName)
+dssFile = Locations.dssFile
 
 # EoY = datetime.strptime('30Sep', '%d%b').date()
 

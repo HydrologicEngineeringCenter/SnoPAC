@@ -17,55 +17,70 @@ def getPaths(dssFile):
     bp = []
     bs = []
     bt = []
-    Ap = []
-    As = []
+#     Ap = []
+#     As = []
     At = []
-    splitter = []
+
     
     p = dssFile.getCatalogedPathnames("/*/*/PRECIP-INC/*/*/*/")
     s = dssFile.getCatalogedPathnames("/*/*/SWE/*/*/*/")
     t = dssFile.getCatalogedPathnames("/*/*/TEMPERATURE-AIR-AVG/*/*/*/")
     
-    for bees in p:
-        splitter = bees.split('/')
-        bp.append(splitter[2])
+    splitter = []
     
+    for bees in p:
+#         print'bees: ',  bees
+        splitter = bees.split('/')
+#         print 'splitter: ', splitter
+        bp.append(splitter[1] +'/' + splitter[2])
     
     splitter = []
     
     for bees in s:
         splitter = bees.split('/')
-        bs.append(splitter[2])
+        bs.append(splitter[1] +'/' + splitter[2])
     
     splitter = []
     
     for bees in t:
         splitter = bees.split('/')
-        bt.append(splitter[2])
+        bt.append(splitter[1] +'/' + splitter[2])
     
     #print '\nbp:', type(bp)
     
-    bp = list(set(bp))
-    bs = list(set(bs))
-    bt = list(set(bt))
+    bp = set(bp)
+    bs = set(bs)
+    bt = set(bt)
     
     
-    c1 = set(bp).intersection(bs)
-    bList = c1.intersection(bt)
-    locList = c1.intersection(At)
+    c1 = bp.intersection(bs)
+    abSet = c1.intersection(bt)
+    abList = list(abSet)
+#     locList = c1.intersection(At)
+    pathList = []
+    for ab in abList:
+        for each in dssFile.getCatalogedPathnames("/"+ab+"/PRECIP-INC/*/*/*/"):
+            pathList.append(each)
+        for each in dssFile.getCatalogedPathnames("/"+ab +"/SWE/*/*/*/"):
+            pathList.append(each)
+        for each in dssFile.getCatalogedPathnames("/"+ab+"/TEMPERATURE-AIR-AVG/*/*/*/"):
+            pathList.append(each)
+
+        
+
     
 #         print '\n#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#'
 #         print '# B-Parts that have all the required data (Precip, SWE, & Temp)  =', bList
 #         print '#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#'
 
     locDict={}
-    for b in bList:
-        ws = dssFile.getCatalogedPathnames("/*/"+b+"/*/*/*/*/")
-        for bee in ws:
-            splitter = bee.split('/')
-            locDict[b] = splitter[1]
+    for ab in pathList:
+        print 'ab = ', ab
+        splitter = ab.split('/')
+        locDict[splitter[2]] = splitter[1]
 #         print '\n Aparts for each B-part:', locDict
-    return locDict, bList
+    print 'locDict = ', locDict
+    return locDict, abList
 
 def getList(locDict):
     # Converting into list of tuples for JList to use
@@ -90,7 +105,6 @@ def getSelectedLocations(listLocations):
         tempPaths = []
         precipPaths = []
         for a_and_b_parts in listLocations:
-#             print a_and_b_parts + "SWE/*/*/*/"
 #             print dssFile.getCatalogedPathnames(a_and_b_parts + "SWE/*/*/*/")
             swePaths.append(dssFile.getCatalogedPathnames(a_and_b_parts + "SWE/*/*/*/"))
             precipPaths.append(dssFile.getCatalogedPathnames(a_and_b_parts + "PRECIP-INC/*/*/*/"))

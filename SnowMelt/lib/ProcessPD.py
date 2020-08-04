@@ -7,9 +7,9 @@ import CalcPD
 from javax.swing import JOptionPane
 from hec.dssgui     import ListSelection
 
-mainWindow = ListSelection.getMainWindow()
-dssFileName = mainWindow.getDSSFilename()
-dssFile = HecDss.open(dssFileName)
+# mainWindow = ListSelection.getMainWindow()
+# dssFileName = mainWindow.getDSSFilename()
+# dssFile = HecDss.open(dssFileName)
 
 EoY = datetime.strptime('30Sep', '%d%b').date()
 
