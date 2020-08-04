@@ -51,7 +51,9 @@ HecDataManager.setMessageLevel(5)
 
 class UI:
     global dssFile
-    dssFile = HecDss.open(r"C:\jy\SnowMelt\snotel_3v6.dss")
+    mainWindow = ListSelection.getMainWindow()
+    dssFileName = mainWindow.getDSSFilename()
+    dssFile = HecDss.open(dssFileName)
     global frame, lbl_close, list_locations, chckbxShowLocationPlot, eventsTable, dm_events, dm_meltRate
     global swePaths, precipPaths, tempPaths, bList, meltRateTable, startDateField, endDateField
     
