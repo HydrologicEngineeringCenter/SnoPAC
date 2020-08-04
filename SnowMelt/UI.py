@@ -20,6 +20,7 @@ from java.io import File
 # from java.util import Arrays, Collections
 
 from hec.heclib.dss     import HecDss, HecDataManager
+from hec.dssgui         import ListSelection
 # from hec.util import CalendarField
 def lib_dir_311():
     parent_dir = os.getcwd()
@@ -31,7 +32,7 @@ def lib_dir_311():
     sys.path.append(lib_dir)
 
 def lib_dir_321():
-    parent_dir = os.path.join(os.environ['APPDATA'], 'DSSVue', 'scripts')
+    parent_dir = os.path.join(os.environ['APPDATA'], "HEC",'DSSVue', 'scripts')
     global lib_dir2
     lib_dir2 = os.path.join(parent_dir, 'lib')
     global img_dir2
