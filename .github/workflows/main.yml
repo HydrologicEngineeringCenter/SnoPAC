@@ -44,6 +44,6 @@ jobs:
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOEKN }}
-          SOURCE: .\SnowMelt
+          SOURCE: ./SnowMelt
         
         
