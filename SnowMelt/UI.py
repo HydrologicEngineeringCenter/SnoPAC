@@ -212,7 +212,7 @@ class UI:
         
     def plotPDBtnSelect(event):
         selected_Events = eventsTable.getSelectedRows()
-#         print 'selected_Events: ', selected_Events
+        # Print 'selected_Events: ', selected_Events
         # Sorting of the table by selecting the headers is doen by using: eventsTable.setAutoCreateRowSorter(True)
         # This sorts the table but does not update the table model.
         # To ensure sorting and selecting of resulting paths works properly, 
