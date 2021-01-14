@@ -36,6 +36,12 @@ jobs:
           echo test, and deploy your project.
       - name: Run zip command
         run:  zip -r release.zip .
+      - name: Create Release Folder
+        run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
+      - name: Switch to Release Folder
+        run:
+          cd release
+          ls -la
         
         
         
