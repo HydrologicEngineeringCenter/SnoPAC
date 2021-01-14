@@ -39,7 +39,7 @@ jobs:
       - name: Create Release Folder
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
       - name: Switch to Release Folder
-        run:
+        run: |
           cd release
           ls -la
         
