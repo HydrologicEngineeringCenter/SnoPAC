@@ -34,8 +34,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Run zip command
-        run:  zip -r release.zip ./SnowMelt
       - name: Create Release Folder
         run: rsync -arv --exclude='.git/' --exclude='.github/' --exclude='.gitignore' . ./release
       - name: Switch to Release Folder
@@ -46,6 +44,6 @@ jobs:
         uses: anothrNick/github-tag-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.TOEKN }}
-
+          SOURCE: .\SnowMelt
         
         
